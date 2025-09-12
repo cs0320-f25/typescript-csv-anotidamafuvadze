@@ -8,23 +8,23 @@
 
 - #### Step 3: use an LLM to help expand your perspective.
 
-## Functionality
+### Functionality
 
-### Handle Embedded Commas and Quotes
+#### 1. Handle Embedded Commas and Quotes
 **User Story:** As a developer, I want the parser to correctly handle commas, quotes, and escaped quotes inside fields (e.g., `"New York, NY"`) so that data containing punctuation is parsed accurately without breaking column structure.
 
-### Line Breaks Inside Fields
+#### 2. Line Breaks Inside Fields
 **User Story:** As a developer, I want the parser to support multi-line text inside quoted fields so that datasets with long descriptions, addresses, or notes are preserved correctly across rows.
 
-### Row Shape Consistency
+#### 3. Row Shape Consistency
 **User Story:** As a developer, I want the parser to detect when a row has too many or too few columns so that I can quickly identify malformed data and maintain schema consistency across the file.
 
-## Extensibility
+### Extensibility
 
-### Data Type Consistency
+#### 4. Data Type Consistency
 **User Story:** As a developer, I want the parser to validate that values in each column are consistent with an expected type (e.g., all numbers in a numeric column, all dates in a date column) so that I can trust the integrity of the dataset and avoid runtime errors caused by mixed types.
 
-## Reflections
+### Reflections
 
 - **Initial ideas (Me):** Focused on handling quoted fields with commas, configuring how empty fields should be treated, and addressing header ambiguity.
 - **Additional insights (LLM):** Added considerations like trimming whitespace and managing row shape inconsistencies when rows have too many or too few columns.
