@@ -11,18 +11,18 @@
 ### Functionality
 
 #### 1. Handle Embedded Commas and Quotes
-**User Story:** As a developer, I want the parser to correctly handle commas, quotes, and escaped quotes inside fields (e.g., `"New York, NY"`) so that data containing punctuation is parsed accurately without breaking column structure.
+**- User Story:** As a developer, I want the parser to correctly handle commas, quotes, and escaped quotes inside fields (e.g., `"New York, NY"`) so that data containing punctuation is parsed accurately without breaking column structure.
 
 #### 2. Line Breaks Inside Fields
-**User Story:** As a developer, I want the parser to support multi-line text inside quoted fields so that datasets with long descriptions, addresses, or notes are preserved correctly across rows.
+**- User Story:** As a developer, I want the parser to support multi-line text inside quoted fields so that datasets with long descriptions, addresses, or notes are preserved correctly across rows.
 
 #### 3. Row Shape Consistency
-**User Story:** As a developer, I want the parser to detect when a row has too many or too few columns so that I can quickly identify malformed data and maintain schema consistency across the file.
+**- User Story:** As a developer, I want the parser to detect when a row has too many or too few columns so that I can quickly identify malformed data and maintain schema consistency across the file.
 
 ### Extensibility
 
 #### 4. Data Type Consistency
-**User Story:** As a developer, I want the parser to validate that values in each column are consistent with an expected type (e.g., all numbers in a numeric column, all dates in a date column) so that I can trust the integrity of the dataset and avoid runtime errors caused by mixed types.
+**- User Story:** As a developer, I want the parser to validate that values in each column are consistent with an expected type (e.g., all numbers in a numeric column, all dates in a date column) so that I can trust the integrity of the dataset and avoid runtime errors caused by mixed types.
 
 ### Reflections
 
