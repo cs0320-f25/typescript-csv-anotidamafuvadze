@@ -10,27 +10,31 @@
 
 ### Functionality
 
-#### 1. Handle Embedded Commas and Quotes
+#### 1. Handle Embedded Commas and Quotes (Me + LLM)
 **- User Story:** As a developer, I want the parser to correctly handle commas, quotes, and escaped quotes inside fields (e.g., `"New York, NY"`) so that data containing punctuation is parsed accurately without breaking column structure.
 
-#### 2. Line Breaks Inside Fields
+#### 2. Line Breaks Inside Fields (LLM)
 **- User Story:** As a developer, I want the parser to support multi-line text inside quoted fields so that datasets with long descriptions, addresses, or notes are preserved correctly across rows.
 
-#### 3. Row Shape Consistency
+#### 3. Row Shape Consistency (LLM)
 **- User Story:** As a developer, I want the parser to detect when a row has too many or too few columns so that I can quickly identify malformed data and maintain schema consistency across the file.
 
 ### Extensibility
 
-#### 4. Data Type Consistency
+#### 4. Data Type Consistency (Me)
 **- User Story:** As a developer, I want the parser to validate that values in each column are consistent with an expected type (e.g., all numbers in a numeric column, all dates in a date column) so that I can trust the integrity of the dataset and avoid runtime errors caused by mixed types.
 
-### Reflections
+### Reflection
 
-- **Initial ideas (Me):** Focused on handling quoted fields with commas, configuring how empty fields should be treated, and addressing header ambiguity.
-- **Additional insights (LLM):** Added considerations like trimming whitespace and managing row shape inconsistencies when rows have too many or too few columns.
-- **What worked well:** Rephrasing the prompt to ask about developer perspectives helped organize results into clearer categories (e.g., data integrity, performance).
-- **What resonated most:** The distinction between **common features** (what most CSV parsers do) versus **best-case features** (what makes a great parser).
-- **What resonated less:** Over-engineering solutions that might improve rare cases but reduce overall simplicity and developer experience.
+**- Initial ideas (Me):** I focused on handling quoted fields with commas, configuring how empty fields should be treated, and addressing header ambiguity.  
+
+**- Additional insights (LLM):** I hadn’t considered issues like trimming whitespace or managing row shape inconsistencies when rows have too many or too few columns, which the LLM highlighted.  
+
+**- What worked well:** I found that rephrasing the prompt to ask about developer perspectives organized the results into clearer categories such as data integrity and performance.  
+
+**- What resonated with me:** The distinction between what is common and average versus what represents the best possible experience.  
+
+**- What didn’t resonate as much:** The idea of making changes that might improve some edge cases but reduce the overall experience.  
 
 
 ### Design Choices
