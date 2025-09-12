@@ -30,7 +30,7 @@
 
 **- Additional insights (LLM):** I hadn’t considered issues like trimming whitespace or managing row shape inconsistencies when rows have too many or too few columns, which the LLM highlighted.  
 
-**- What worked well:** I found that rephrasing the prompt to ask about developer perspectives organized the results into clearer categories such as data integrity and performance.  
+**- What worked well:** I found that rephrasing the prompt to ask about what makes for an efficient CSV parser organized the results into clearer categories such as data integrity and performance.  
 
 **- What resonated with me:** The distinction between what is common and average versus what represents the best possible experience.  
 
