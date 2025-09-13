@@ -51,50 +51,35 @@ Finally, a proper CSV parser should deal with row shape inconsistencies well (e.
 
 - #### 2. Random, On-Demand Generation
 
+I would mainly use the random data generation function to test the scalability and efficiency of my code. Right now, my focus has been on making sure the parser works correctly according to the rules I’ve defined. But in a real-world context, correctness is usually assumed—the real challenge is whether the solution can handle data efficiently.
+
+Since real-world use typically concerns hugely large datasets with hundreds of millions of rows, I'd like to utilize random CSV generation to stress test under load. This way, I can measure the time and space complexity of the parser and see if it will scale or not without being too slow or memory-intensive. Essentially, I'd be using random data not just to stress test for correctness, but to verify the parser will scale with the size and volatility of real datasets.
+
 - #### 3. Overall experience, Bugs encountered and resolved  
-
-This sprint differed from my prior programming assignments mainly because it introduced Zod schemas, which I had never used before.  
-Learning how to work with them, while also navigating TypeScript’s type system, was challenging.  
-Even when I knew what the program should do, TypeScript still required me to explicitly define types for variables and outputs, which could change depending on the CSV data and the schema provided.  
-Understanding how to satisfy the compiler in those cases took some time.  
-
-What surprised me most were the design questions I found myself asking.  
-In past assignments, I usually thought in terms of straightforward code correctness, but here I had to really think about what responsibilities belonged to the parser itself versus what should be left to the user through their schema.  
-I realized that there isn’t always a single “right” answer, and it was harder than expected to balance flexibility with sensible defaults while avoiding unnecessary assumptions.  
-
-#### Errors/Bugs  
-
-I also ran into several bugs.  
-One was figuring out how to pass the schema as a parameter, especially when the schema was undefined.  
-My initial syntax for handling undefined didn’t work, so I had to add guard clauses with if-statements.  
-
-Another bug came up when deciding how to return errors.  
-I didn’t want the entire function to crash on invalid rows.  
-I solved this by returning both data and errors together in one output object, so users could see what succeeded and what failed.  
-
-Finally, I struggled with coercion.  
-Because CSVs only store strings, validation against schemas that expected numbers would fail unless I explicitly applied coercion.  
-Handling that edge case forced me to think carefully about how much the parser itself should assume versus what the schema should handle.  
-
-#### Tests  
-
-I wrote tests to confirm that valid data would pass through correctly with no errors.  
-I also tested that invalid rows would not crash the parser but instead produce error objects that included both the row number and the error details.  
-
-I checked coercion specifically by writing tests that compared results using `z.number()` versus `z.coerce.number()`.  
-This made sure that the parser could handle string numbers only when coercion was applied.  
-
-These tests helped me understand exactly where my implementation succeeded and where it needed safeguards.  
-
-#### How To…
 
 This sprint differed from my prior programming assignments mainly because it introduced Zod schemas, which I had never used before. Learning how to work with them, while also navigating TypeScript’s type system, was challenging. Even when I knew what the program should do, TypeScript still required me to explicitly define types for variables and outputs, which could change depending on the CSV data and the schema provided. Understanding how to satisfy the compiler in those cases took some time.
 
 What surprised me most were the design questions I found myself asking. In past assignments, I usually thought in terms of straightforward code correctness, but here I had to really think about what responsibilities belonged to the parser itself versus what should be left to the user through their schema. I realized that there isn’t always a single “right” answer, and it was harder than expected to balance flexibility with sensible defaults while avoiding unnecessary assumptions.
 
-I also ran into several bugs. One was figuring out how to pass the schema as a parameter, especially when the schema was undefined. My initial syntax for handling undefined didn’t work, so I had to add guard clauses with if-statements. Another bug came up when deciding how to return errors. I didn’t want the entire function to crash on invalid rows. I solved this by returning both data and errors together in one output object, so users could see what succeeded and what failed. Finally, I struggled with coercion. Because CSVs only store strings, validation against schemas that expected numbers would fail unless I explicitly applied coercion. Handling that edge case forced me to think carefully about how much the parser itself should assume versus what the schema should handle.
+#### Errors/Bugs  
 
-#### Team members and contributions (include cs logins):
+I also ran into several bugs. One was figuring out how to pass the schema as a parameter, especially when the schema was undefined. My initial syntax for handling undefined didn’t work, so I had to add guard clauses with if-statements.  
+
+Another bug came up when deciding how to return errors. I didn’t want the entire function to crash on invalid rows. I solved this by returning both data and errors together in one output object, so users could see what succeeded and what failed.  
+
+Finally, I struggled with coercion because CSVs only store strings, validation against schemas that expected numbers would fail unless I explicitly applied coercion. Handling that edge case forced me to think carefully about how much the parser itself should assume versus what the schema should handle.  
+
+#### Tests  
+
+I wrote tests to confirm that valid data would pass through correctly with no errors. I also tested that invalid rows would not crash the parser but instead produce error objects that included both the row number and the error details.  
+
+I checked coercion specifically by writing tests that compared results using `z.number()` versus `z.coerce.number()`. This made sure that the parser could handle string numbers only when coercion was applied. These tests helped me understand exactly where my implementation succeeded and where it needed safeguards.  
+
+#### How To…
+
+#### Team members and contributions (include cs logins): 
+
+None.
 
 #### Collaborators (cslogins of anyone you worked with on this project and/or generative AI): 
 
