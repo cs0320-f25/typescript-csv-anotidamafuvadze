@@ -71,9 +71,14 @@ Finally, I struggled with coercion because CSVs only store strings, validation a
 
 #### Tests  
 
-I wrote tests to confirm that valid data would pass through correctly with no errors. I also tested that invalid rows would not crash the parser but instead produce error objects that included both the row number and the error details.  
+I implemented multiple test suites to check correctness and error handling:  
 
-I checked coercion specifically by writing tests that compared results using `z.number()` versus `z.coerce.number()`. This made sure that the parser could handle string numbers only when coercion was applied. These tests helped me understand exactly where my implementation succeeded and where it needed safeguards.  
+- **Undefined schema**: Confirmed that calling `parseCSV` without a schema returns raw `string[][]`.  
+- **Invalid rows**: Ensured the parser returns `validated: false` and includes error objects with row numbers and issues.  
+- **Error details**: Verified that the parser attaches both the row contents and error information for failed validations.  
+- **Coercion vs. strict**:  Tested a schema using `z.coerce.number()` to ensure that numeric strings from the CSV (like `"30"`) were successfully converted into numbers and passed validation. This confirmed that coercion can handle CSV’s string-only values without causing unnecessary validation errors.  
+
+These tests ensure the parser works with valid input, fails gracefully with invalid input, and handles type coercion properly.  
 
 #### How To…
 

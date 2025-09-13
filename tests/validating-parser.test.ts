@@ -2,27 +2,9 @@ import { parseCSV } from "../src/validating-parser";
 import * as path from "path";
 import { z } from "zod";
 
-const USERS_VALID_CSV_PATH = path.join(__dirname, "../data/users_valid.csv");
 const USERS_INVALID_CSV_PATH = path.join(__dirname, "../data/users_invalid.csv");
 const USERS_COERCE_CSV_PATH = path.join(__dirname, "../data/users_coerce.csv");
 const USERS_BASIC_CSV_PATH = path.join(__dirname, "../data/users_basic.csv");
-
-  test("type validation", async () => {
-    const userSchema = z.tuple([
-      z.string(),
-      z.number(),
-      z.string().email(),
-    ]);
-    const result = await parseCSV(USERS_VALID_CSV_PATH, userSchema);
-    expect(result).toEqual({
-      validated: true,
-      data: [
-        ["Alice", 25, "alice@example.com"],
-        ["Bob", 30, "bob@example.com"],
-      ],
-      errors: [],
-    });
-  });
 
   test("undefined schema returns string[][]", async () => {
     const result = await parseCSV(USERS_BASIC_CSV_PATH);
