@@ -97,3 +97,6 @@ AI also helped me brainstorm edge cases (empty files, missing/extra columns, mal
 #### Link to GitHub Repo: 
 https://github.com/cs0320-f25/typescript-csv-anotidamafuvadze
 
+#### Link to chat logs: 
+https://docs.google.com/document/d/1x_7Nfy0y0XVO0Los5Tlr7zq0lm5YYur_pBqK2zwsbeE/edit?usp=sharing
+
