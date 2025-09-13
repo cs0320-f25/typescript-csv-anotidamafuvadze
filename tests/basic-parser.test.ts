@@ -5,8 +5,7 @@ import { z } from "zod";
 const PEOPLE_CSV_PATH = path.join(__dirname, "../data/people.csv");
 const EMPTY_CSV_PATH = path.join(__dirname, "../data/emptyCols.csv");
 const COMMAS_CSV_PATH = path.join(__dirname, "../data/commasPresent.csv");
-const LABELS_CSV_PATH = path.join(__dirname, "../data/noLabels.csv");
-
+const NO_LABELS_CSV_PATH = path.join(__dirname, "../data/noLabels.csv");
 
 
 test("parseCSV yields arrays", async () => {
@@ -30,13 +29,13 @@ test("parseCSV yields only arrays", async () => {
 
 // Test when the first row is not a label
 test("CSV has no labels",  async () => {
-  const results = await parseCSV(COMMAS_CSV_PATH)
+  const results = await parseCSV(NO_LABELS_CSV_PATH)
   expect(results).toHaveLength(5);
   expect(results[0]).toEqual(["Alice", "22", "New York"]);
   expect(results[1]).toEqual(["Ben", "25", "Boston"]);
   expect(results[2]).toEqual(["Clara", "28", "Chicago"]);
   expect(results[3]).toEqual(["David", "30", "San Francisco"]);
-  expect(results[5]).toEqual(["Ella", "27", "Seattle"]);
+  expect(results[4]).toEqual(["Ella", "27", "Seattle"]);
   
 });
 

@@ -64,7 +64,16 @@ export async function parseCSV<T extends z.ZodTypeAny>(
     rowNumber++;
     if (!line.trim()) continue;
 
-    const values = line.split(",").map(v => v.trim());
+    // Split CSV line, trim whitespace, and strip surrounding quotes
+    const values = line.split(",").map(v => {
+      let cell = v.trim();
+      if ((cell.startsWith('"') && cell.endsWith('"')) || (cell.startsWith("'") && cell.endsWith("'"))) {
+        cell = cell.slice(1, -1).replace(/""/g, '"');
+      }
+      return cell;
+});
+    
+  
     const parsed = schema.safeParse(values);
 
     if (parsed.success) {
